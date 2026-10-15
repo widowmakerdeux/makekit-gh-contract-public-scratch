@@ -5,9 +5,4 @@ jobs:
     name: makekit/ci_check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - run: |
-          git log -1 --format=%s
-          if git log -1 --format=%s | grep -q 'verdict: fail'; then echo "the check fails on purpose"; exit 1; fi
+      - run: echo "the check fails on purpose" && exit 1
